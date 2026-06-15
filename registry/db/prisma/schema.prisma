@@ -1,1 +1,42 @@
-// This is a blank Prisma schema file
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+/// Represents the single latest authoritative state of a feature flag rule.
+/// Each record maps one feature key to its current enablement configuration,
+/// tier restrictions, and rollout percentage. This model is the source of truth
+/// consumed by the SDK's evaluateFlag engine to make real-time flag decisions.
+model FeatureFlag {
+  /// The unique identifier for this feature flag (e.g. "beta-ui", "dark-mode").
+  /// Acts as the primary key — one record per flag key.
+  key               String   @id
+
+  /// Master kill switch. When false, the feature is disabled for all users
+  /// regardless of tier or rollout percentage.
+  enabled           Boolean  @default(false)
+
+  /// Optional list of billing tiers permitted to access this feature.
+  /// An empty array means the feature is not tier-restricted.
+  /// Examples: ["pro", "enterprise"]
+  allowedTiers      String[]
+
+  /// Optional gradual rollout percentage (0–100).
+  /// When set, only the deterministic percentage of subjects (by id hash)
+  /// will have the feature enabled. Null means 100% rollout to eligible subjects.
+  rolloutPercentage Int?
+
+  /// Automatically updated by Prisma on every write.
+  /// Used to track when the flag configuration was last changed.
+  updatedAt         DateTime @updatedAt
+}

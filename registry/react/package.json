@@ -1,0 +1,15 @@
+{
+  "name": "@featuregate/react",
+  "version": "0.0.0",
+  "private": true,
+  "description": "React context and hooks for FeatureGate SDK",
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "peerDependencies": {
+    "react": "^18 || ^19"
+  },
+  "devDependencies": {
+    "@types/react": "^19",
+    "typescript": "^5"
+  }
+}

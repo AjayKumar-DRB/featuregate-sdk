@@ -203,6 +203,53 @@ importers:
         specifier: 5.9.2
         version: 5.9.2
 
+  registry/core:
+    devDependencies:
+      typescript:
+        specifier: ^5
+        version: 5.9.2
+
+  registry/db:
+    devDependencies:
+      typescript:
+        specifier: ^5
+        version: 5.9.2
+
+  registry/nestjs:
+    devDependencies:
+      typescript:
+        specifier: ^5
+        version: 5.9.2
+
+  registry/nextjs:
+    dependencies:
+      next:
+        specifier: '>=14'
+        version: 16.2.9(@babel/core@7.29.7)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      react:
+        specifier: ^18 || ^19
+        version: 19.2.4
+    devDependencies:
+      '@types/react':
+        specifier: ^19
+        version: 19.2.2
+      typescript:
+        specifier: ^5
+        version: 5.9.2
+
+  registry/react:
+    dependencies:
+      react:
+        specifier: ^18 || ^19
+        version: 19.2.4
+    devDependencies:
+      '@types/react':
+        specifier: ^19
+        version: 19.2.2
+      typescript:
+        specifier: ^5
+        version: 5.9.2
+
 packages:
 
   '@alloc/quick-lru@5.2.0':
